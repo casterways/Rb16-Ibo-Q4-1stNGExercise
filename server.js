@@ -21,9 +21,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.render("index");
 });
+app.get("/draw", (req, res) => {
+  let sideLength = req.query.sideLength;
+  let sideWidth = req.query.sideWidth;
+  res.render("draw", {sideLength});
+});
+app.post("/draw", (req, res) => {
+  let sideLength = req.body.sideLength;
+  let sideWidth = req.body.sideWidth;
+  res.render("draw", {sideLength}, {sideWidth});
+});
 
 // Create express route binder for draw.hbs and get the data from the url as parameters
 // that came from index.hbs
+
+
+
+//Makes the app listen to port 3000
+app.listen(port, () => console.log(`App listening to port ${port}`));
 
 
 
